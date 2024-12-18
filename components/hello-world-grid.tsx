@@ -78,7 +78,7 @@ func main() {
     code: `fn main() {
     println!("Hello, World!");
 }`,
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg",
+    icon: "https://cdn.jsdelivr.net/npm/devicons@1.8.0/!SVG/rust.svg",
     gradient: "from-orange-500/20 via-orange-500/10 to-orange-500/5"
   },
   {
