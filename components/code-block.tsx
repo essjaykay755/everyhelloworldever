@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button'
 
 interface CodeBlockProps {
   code: string
-  language: string
   extension: string
 }
 
@@ -34,7 +33,7 @@ const languageMap: { [key: string]: string } = {
   lua: 'lua'
 }
 
-export function CodeBlock({ code, language, extension }: CodeBlockProps) {
+export function CodeBlock({ code, extension }: CodeBlockProps) {
   const [copied, setCopied] = useState(false)
 
   const copyToClipboard = async () => {
@@ -50,7 +49,7 @@ export function CodeBlock({ code, language, extension }: CodeBlockProps) {
         code={code.trim()}
         language={languageMap[extension] || extension}
       >
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        {({ style, tokens, getLineProps, getTokenProps }) => (
           <pre 
             className="p-4 overflow-x-auto h-full" 
             style={{ ...style, background: 'transparent' }}

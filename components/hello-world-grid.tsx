@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { CodeBlock } from './code-block'
 import { HtmlCard } from './html-card'
+import Image from 'next/image'
 
 interface HelloWorld {
   language: string
@@ -181,9 +182,11 @@ export function HelloWorldGrid() {
           <CardContent className="p-0 h-full flex flex-col">
             <div className="border-b border-border bg-muted/50 px-4 py-2 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <img 
+                <Image 
                   src={hello.icon} 
                   alt={`${hello.language} logo`} 
+                  width={20}
+                  height={20}
                   className="h-5 w-5"
                   loading="lazy"
                 />
@@ -194,7 +197,6 @@ export function HelloWorldGrid() {
             <div className="flex-1 flex flex-col">
               <CodeBlock
                 code={hello.code}
-                language={hello.language}
                 extension={hello.extension}
               />
             </div>

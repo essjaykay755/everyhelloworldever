@@ -70,7 +70,6 @@ export function HtmlCard() {
           <div className="flex-1 flex flex-col relative">
             <CodeBlock
               code={htmlCode}
-              language="HTML"
               extension="html"
             />
             {showX && (
