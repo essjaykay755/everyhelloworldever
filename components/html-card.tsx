@@ -30,7 +30,8 @@ export function HtmlCard() {
         }
       },
       {
-        threshold: 0.1
+        threshold: 0,
+        rootMargin: '100px'
       }
     )
 
@@ -51,8 +52,8 @@ export function HtmlCard() {
   return (
     <div 
       ref={cardRef}
-      className={`transition-all duration-700 transform
-        ${!isVisible ? '-translate-x-full opacity-0' : 'translate-x-0 opacity-100'}
+      className={`transition-all duration-700
+        ${!isVisible ? 'opacity-0 scale-75' : 'opacity-100 scale-100'}
       `}
     >
       <Card className="overflow-hidden relative group/card h-full">
