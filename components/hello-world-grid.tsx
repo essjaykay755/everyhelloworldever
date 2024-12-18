@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { CodeBlock } from './code-block'
+import { HtmlCard } from './html-card'
 
 interface HelloWorld {
   language: string
@@ -200,6 +201,7 @@ export function HelloWorldGrid() {
           </CardContent>
         </Card>
       ))}
+      <HtmlCard />
     </div>
   )
 }
