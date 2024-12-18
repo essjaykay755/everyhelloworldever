@@ -56,8 +56,8 @@ export function HtmlCard() {
       `}
     >
       <Card className="overflow-hidden relative group/card h-full">
-        <div className="absolute top-2 right-4 z-10">
-          <span className="text-4xl">{emoji}</span>
+        <div className="absolute top-4 right-4 z-10">
+          <span className="text-6xl">{emoji}</span>
         </div>
         <CardContent className="p-0 h-full flex flex-col">
           <div className="border-b border-border bg-muted/50 px-4 py-2 flex items-center justify-between">
@@ -78,10 +78,10 @@ export function HtmlCard() {
               </div>
             )}
             {showMessage && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                <div className="text-white text-xl font-medium">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/80">
+                <div className="text-white text-2xl font-medium text-center px-4">
                   <Typewriter 
-                    text="You are not a programming language!" 
+                    text="You are not a programming language, get outta here!" 
                     delay={50}
                   />
                 </div>
