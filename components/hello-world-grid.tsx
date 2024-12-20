@@ -146,14 +146,14 @@ class Program {
   {
     language: "R",
     extension: "r",
-    code: 'cat("Hello, World!\n")',
+    code: 'cat("Hello, World!")',
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg",
     gradient: "from-blue-500/20 via-blue-500/10 to-blue-500/5"
   },
   {
     language: "Perl",
     extension: "pl",
-    code: 'print "Hello, World!\n";',
+    code: 'print "Hello, World!";',
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/perl/perl-original.svg",
     gradient: "from-purple-500/20 via-purple-500/10 to-purple-500/5"
   },

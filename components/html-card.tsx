@@ -5,6 +5,7 @@ import { X } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { CodeBlock } from './code-block'
 import { Typewriter } from './typewriter'
+import Image from 'next/image'
 
 export function HtmlCard() {
   const cardRef = useRef<HTMLDivElement>(null)
@@ -63,6 +64,12 @@ export function HtmlCard() {
         <CardContent className="p-0 h-full flex flex-col">
           <div className="border-b border-border bg-muted/50 px-4 py-2 flex items-center justify-between">
             <div className="flex items-center gap-2">
+              <Image 
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                alt="HTML5 icon"
+                width={24}
+                height={24}
+              />
               <h2 className="font-semibold">HTML</h2>
             </div>
             <span className="text-xs text-muted-foreground">.html</span>
@@ -78,8 +85,8 @@ export function HtmlCard() {
               </div>
             )}
             {showMessage && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/80">
-                <div className="text-white text-2xl font-medium text-center px-4">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/95 p-6">
+                <div className="text-white/90 text-2xl text-center max-w-[80%] leading-relaxed">
                   <Typewriter 
                     text="You are not a programming language, get outta here!" 
                     delay={50}

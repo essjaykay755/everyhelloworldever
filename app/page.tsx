@@ -17,9 +17,6 @@ export default function HomePage() {
           </p>
         </header>
         <HelloWorldGrid />
-        <footer className="mt-12 text-center text-sm text-primary-foreground/80">
-          An <Link href="https://essjayKay.dev" className="text-primary hover:text-primary/80 transition-colors underline font-medium" target="_blank" rel="noopener noreferrer">EssJayKay.dev</Link> Creation
-        </footer>
       </main>
     </div>
   )

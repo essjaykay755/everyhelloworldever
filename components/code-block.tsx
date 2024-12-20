@@ -2,7 +2,8 @@
 
 import { Check, Copy } from 'lucide-react'
 import { useState } from 'react'
-import { Highlight, themes } from 'prism-react-renderer'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 import { Button } from '@/components/ui/button'
 
@@ -11,7 +12,7 @@ interface CodeBlockProps {
   extension: string
 }
 
-// Map file extensions to Prism language identifiers
+// Map file extensions to language identifiers
 const languageMap: { [key: string]: string } = {
   java: 'java',
   rs: 'rust',
@@ -30,7 +31,15 @@ const languageMap: { [key: string]: string } = {
   hs: 'haskell',
   r: 'r',
   pl: 'perl',
-  lua: 'lua'
+  lua: 'lua',
+  html: 'html',
+  css: 'css',
+  sh: 'bash',
+  yml: 'yaml',
+  json: 'json',
+  md: 'markdown',
+  sql: 'sql',
+  xml: 'xml'
 }
 
 export function CodeBlock({ code, extension }: CodeBlockProps) {
@@ -44,26 +53,19 @@ export function CodeBlock({ code, extension }: CodeBlockProps) {
 
   return (
     <div className="relative group min-h-[200px]">
-      <Highlight
-        theme={themes.dracula}
-        code={code.trim()}
+      <SyntaxHighlighter
         language={languageMap[extension] || extension}
+        style={dracula}
+        customStyle={{
+          margin: 0,
+          padding: '1rem',
+          background: 'transparent',
+          minHeight: '200px'
+        }}
+        wrapLongLines={true}
       >
-        {({ style, tokens, getLineProps, getTokenProps }) => (
-          <pre 
-            className="p-4 overflow-x-auto h-full" 
-            style={{ ...style, background: 'transparent' }}
-          >
-            {tokens.map((line, i) => (
-              <div key={i} {...getLineProps({ line })}>
-                {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token })} />
-                ))}
-              </div>
-            ))}
-          </pre>
-        )}
-      </Highlight>
+        {code.trim()}
+      </SyntaxHighlighter>
       <Button
         size="icon"
         variant="secondary"
