@@ -1,5 +1,4 @@
 import { HelloWorldGrid } from '@/components/hello-world-grid'
-import Link from 'next/link'
 
 export default function HomePage() {
   return (
