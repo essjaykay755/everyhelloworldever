@@ -422,3 +422,91 @@
   background: linear-gradient(to bottom right, rgba(0, 89, 156, 0.1), rgba(0, 68, 130, 0.1));
 }
 
+/* Add more language gradients */
+.from-fortran {
+  --tw-gradient-from: #734F96;
+  --tw-gradient-to: rgb(115 79 150 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-fortran {
+  --tw-gradient-to: #4D3764;
+}
+
+.from-matlab {
+  --tw-gradient-from: #FF9800;
+  --tw-gradient-to: rgb(255 152 0 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-matlab {
+  --tw-gradient-to: #E65100;
+}
+
+.from-julia {
+  --tw-gradient-from: #9558B2;
+  --tw-gradient-to: rgb(149 88 178 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-julia {
+  --tw-gradient-to: #389826;
+}
+
+.from-lisp {
+  --tw-gradient-from: #428BCA;
+  --tw-gradient-to: rgb(66 139 202 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-lisp {
+  --tw-gradient-to: #3071A9;
+}
+
+.from-prolog {
+  --tw-gradient-from: #E64A19;
+  --tw-gradient-to: rgb(230 74 25 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-prolog {
+  --tw-gradient-to: #BF360C;
+}
+
+/* Language card hover effects for new languages */
+.language-card.fortran:hover {
+  background: linear-gradient(to bottom right, rgba(115, 79, 150, 0.1), rgba(77, 55, 100, 0.1));
+}
+
+.language-card.matlab:hover {
+  background: linear-gradient(to bottom right, rgba(255, 152, 0, 0.1), rgba(230, 81, 0, 0.1));
+}
+
+.language-card.julia:hover {
+  background: linear-gradient(to bottom right, rgba(149, 88, 178, 0.1), rgba(56, 152, 38, 0.1));
+}
+
+.language-card.lisp:hover {
+  background: linear-gradient(to bottom right, rgba(66, 139, 202, 0.1), rgba(48, 113, 169, 0.1));
+}
+
+.language-card.prolog:hover {
+  background: linear-gradient(to bottom right, rgba(230, 74, 25, 0.1), rgba(191, 54, 12, 0.1));
+}
+
+/* Language page backgrounds for new languages */
+.language-page.fortran {
+  background: linear-gradient(to bottom right, rgba(115, 79, 150, 0.1), rgba(77, 55, 100, 0.1));
+}
+
+.language-page.matlab {
+  background: linear-gradient(to bottom right, rgba(255, 152, 0, 0.1), rgba(230, 81, 0, 0.1));
+}
+
+.language-page.julia {
+  background: linear-gradient(to bottom right, rgba(149, 88, 178, 0.1), rgba(56, 152, 38, 0.1));
+}
+
+.language-page.lisp {
+  background: linear-gradient(to bottom right, rgba(66, 139, 202, 0.1), rgba(48, 113, 169, 0.1));
+}
+
+.language-page.prolog {
+  background: linear-gradient(to bottom right, rgba(230, 74, 25, 0.1), rgba(191, 54, 12, 0.1));
+}
+

@@ -39,7 +39,15 @@ const languageMap: { [key: string]: string } = {
   json: 'json',
   md: 'markdown',
   sql: 'sql',
-  xml: 'xml'
+  xml: 'xml',
+  f90: 'fortran',
+  f95: 'fortran',
+  f: 'fortran',
+  m: 'matlab',
+  jl: 'julia',
+  lisp: 'lisp',
+  cl: 'lisp',
+  pro: 'prolog'
 }
 
 export function CodeBlock({ code, extension }: CodeBlockProps) {

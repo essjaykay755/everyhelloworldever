@@ -155,5 +155,43 @@ class Program {
     code: 'print("Hello, World!")',
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-original.svg",
     gradient: "from-blue-500/20 via-blue-500/10 to-blue-500/5"
+  },
+  {
+    language: "Fortran",
+    extension: "f90",
+    code: `program HelloWorld
+  print *, "Hello, World!"
+end program HelloWorld`,
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fortran/fortran-original.svg",
+    gradient: "from-purple-500/20 via-purple-500/10 to-purple-500/5"
+  },
+  {
+    language: "MATLAB",
+    extension: "m",
+    code: 'disp("Hello, World!")',
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg",
+    gradient: "from-orange-500/20 via-orange-500/10 to-orange-500/5"
+  },
+  {
+    language: "Julia",
+    extension: "jl",
+    code: 'println("Hello, World!")',
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/julia/julia-original.svg",
+    gradient: "from-purple-500/20 via-blue-500/10 to-green-500/5"
+  },
+  {
+    language: "Lisp",
+    extension: "lisp",
+    code: '(format t "Hello, World!")',
+    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Lisp_logo.svg/1024px-Lisp_logo.svg.png",
+    gradient: "from-blue-500/20 via-blue-500/10 to-blue-500/5"
+  },
+  {
+    language: "Prolog",
+    extension: "pro",
+    code: `main :- write('Hello, World!'), nl.
+:- main.`,
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prolog/prolog-original.svg",
+    gradient: "from-red-500/20 via-red-500/10 to-red-500/5"
   }
 ] 

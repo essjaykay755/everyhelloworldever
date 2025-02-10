@@ -313,6 +313,106 @@ function getLanguageInfo(language: string) {
         "Coroutines"
       ],
       funFact: "Lua is the most popular programming language developed in a developing country (Brazil)!"
+    },
+    Fortran: {
+      description: "A pioneering programming language primarily used for scientific and numerical computing.",
+      history: "Developed by IBM in 1957, FORTRAN (FORmula TRANslation) was the first high-level programming language. It revolutionized programming by allowing scientists to write code in a more natural mathematical notation.",
+      platforms: ["Unix/Linux", "Windows", "macOS", "Supercomputers"],
+      useCases: [
+        "Scientific Computing",
+        "Numerical Analysis",
+        "High-Performance Computing",
+        "Weather Forecasting",
+        "Physics Simulations"
+      ],
+      keyFeatures: [
+        "Array programming",
+        "High performance",
+        "Mathematical notation",
+        "Parallel computing support",
+        "Legacy code compatibility"
+      ],
+      funFact: "Fortran is the oldest programming language still in active use and remains crucial in scientific computing!"
+    },
+    Matlab: {
+      description: "A high-level programming language and numerical computing environment.",
+      history: "Created by Cleve Moler in the late 1970s, MATLAB (MATrix LABoratory) was designed to give students easy access to matrix software. It was rewritten in C and released commercially in 1984.",
+      platforms: ["Windows", "macOS", "Linux", "Cloud"],
+      useCases: [
+        "Scientific Research",
+        "Signal Processing",
+        "Image Processing",
+        "Machine Learning",
+        "Control Systems"
+      ],
+      keyFeatures: [
+        "Matrix operations",
+        "Plotting functions",
+        "Algorithm implementation",
+        "Toolbox ecosystem",
+        "Simulink integration"
+      ],
+      funFact: "MATLAB was originally written to help students use matrix software without learning Fortran!"
+    },
+    Julia: {
+      description: "A high-level, high-performance programming language for technical computing.",
+      history: "Development began in 2009 by Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and Alan Edelman. Julia was designed to combine the ease of use of Python with the performance of C.",
+      platforms: ["Windows", "macOS", "Linux", "Web Browsers"],
+      useCases: [
+        "Data Science",
+        "Scientific Computing",
+        "Numerical Analysis",
+        "Machine Learning",
+        "Statistical Computing"
+      ],
+      keyFeatures: [
+        "Multiple dispatch",
+        "Dynamic type system",
+        "High performance",
+        "Parallel computing",
+        "Metaprogramming"
+      ],
+      funFact: "Julia's logo features three dots representing the founders' favorite programming languages: Lisp, Python, and C!"
+    },
+    Lisp: {
+      description: "One of the oldest programming languages, known for its unique syntax and powerful macro system.",
+      history: "Created by John McCarthy in 1958, Lisp (LISt Processing) was one of the first programming languages to introduce many features that are now standard, including tree data structures and garbage collection.",
+      platforms: ["Unix/Linux", "Windows", "macOS", "LISP Machines"],
+      useCases: [
+        "Artificial Intelligence",
+        "Symbolic Computation",
+        "Research",
+        "Education",
+        "Rapid Prototyping"
+      ],
+      keyFeatures: [
+        "Homoiconicity",
+        "Macro system",
+        "Dynamic typing",
+        "Interactive development",
+        "Functional programming"
+      ],
+      funFact: "Lisp was the first language to use garbage collection, and its code-as-data philosophy influenced many modern languages!"
+    },
+    Prolog: {
+      description: "A logic programming language designed for artificial intelligence and computational linguistics.",
+      history: "Developed in 1972 by Alain Colmerauer and Philippe Roussel, Prolog (PROgramming in LOGic) pioneered logic programming and influenced the development of AI programming.",
+      platforms: ["Unix/Linux", "Windows", "macOS", "Web"],
+      useCases: [
+        "Artificial Intelligence",
+        "Expert Systems",
+        "Natural Language Processing",
+        "Knowledge Representation",
+        "Automated Reasoning"
+      ],
+      keyFeatures: [
+        "Logic programming",
+        "Pattern matching",
+        "Backtracking",
+        "Unification",
+        "Declarative style"
+      ],
+      funFact: "Prolog was used to build the first Japanese-to-English machine translation system!"
     }
   }
 
