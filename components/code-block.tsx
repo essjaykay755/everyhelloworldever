@@ -3,7 +3,7 @@
 import { Check, Copy } from 'lucide-react'
 import { useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 import { Button } from '@/components/ui/button'
 
@@ -45,7 +45,9 @@ const languageMap: { [key: string]: string } = {
 export function CodeBlock({ code, extension }: CodeBlockProps) {
   const [copied, setCopied] = useState(false)
 
-  const copyToClipboard = async () => {
+  const copyToClipboard = async (e: React.MouseEvent) => {
+    e.preventDefault()  // Prevent the default action
+    e.stopPropagation()  // Stop the event from bubbling up to the parent Link
     await navigator.clipboard.writeText(code)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
@@ -55,7 +57,7 @@ export function CodeBlock({ code, extension }: CodeBlockProps) {
     <div className="relative group min-h-[200px]">
       <SyntaxHighlighter
         language={languageMap[extension] || extension}
-        style={dracula}
+        style={vscDarkPlus}
         customStyle={{
           margin: 0,
           padding: '1rem',

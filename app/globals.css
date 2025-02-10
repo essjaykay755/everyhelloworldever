@@ -71,3 +71,354 @@
   animation: pulse-red 0.5s ease-in-out infinite;
 }
 
+/* Add these gradient classes for language cards */
+.from-java {
+  --tw-gradient-from: #007396;
+  --tw-gradient-to: rgb(0 115 150 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-java {
+  --tw-gradient-to: #ed8b00;
+}
+
+.from-python {
+  --tw-gradient-from: #3776ab;
+  --tw-gradient-to: rgb(55 118 171 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-python {
+  --tw-gradient-to: #ffd43b;
+}
+
+/* Add similar classes for other languages */
+.from-typescript {
+  --tw-gradient-from: #3178c6;
+  --tw-gradient-to: rgb(49 120 198 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-typescript {
+  --tw-gradient-to: #235a97;
+}
+
+.from-rust {
+  --tw-gradient-from: #dea584;
+  --tw-gradient-to: rgb(222 165 132 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-rust {
+  --tw-gradient-to: #a72145;
+}
+
+/* Add more language gradients as needed */
+
+/* Language-specific gradients */
+.from-javascript {
+  --tw-gradient-from: #f7df1e;
+  --tw-gradient-to: rgb(247 223 30 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-javascript {
+  --tw-gradient-to: #f0db4f;
+}
+
+.from-cpp {
+  --tw-gradient-from: #00599c;
+  --tw-gradient-to: rgb(0 89 156 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-cpp {
+  --tw-gradient-to: #004482;
+}
+
+.from-ruby {
+  --tw-gradient-from: #cc342d;
+  --tw-gradient-to: rgb(204 52 45 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-ruby {
+  --tw-gradient-to: #a31f1a;
+}
+
+.from-go {
+  --tw-gradient-from: #00add8;
+  --tw-gradient-to: rgb(0 173 216 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-go {
+  --tw-gradient-to: #007d9c;
+}
+
+.from-php {
+  --tw-gradient-from: #777bb3;
+  --tw-gradient-to: rgb(119 123 179 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-php {
+  --tw-gradient-to: #4f5b93;
+}
+
+.from-swift {
+  --tw-gradient-from: #f05138;
+  --tw-gradient-to: rgb(240 81 56 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-swift {
+  --tw-gradient-to: #ca2911;
+}
+
+.from-kotlin {
+  --tw-gradient-from: #7f52ff;
+  --tw-gradient-to: rgb(127 82 255 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-kotlin {
+  --tw-gradient-to: #587def;
+}
+
+.from-csharp {
+  --tw-gradient-from: #68217A;
+  --tw-gradient-to: rgb(104 33 122 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-csharp {
+  --tw-gradient-to: #9B4F96;
+}
+
+.from-scala {
+  --tw-gradient-from: #dc322f;
+  --tw-gradient-to: rgb(220 50 47 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-scala {
+  --tw-gradient-to: #c61a19;
+}
+
+.from-dart {
+  --tw-gradient-from: #00b4ab;
+  --tw-gradient-to: rgb(0 180 171 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-dart {
+  --tw-gradient-to: #00938b;
+}
+
+.from-haskell {
+  --tw-gradient-from: #5e5086;
+  --tw-gradient-to: rgb(94 80 134 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-haskell {
+  --tw-gradient-to: #453a61;
+}
+
+.from-r {
+  --tw-gradient-from: #276dc3;
+  --tw-gradient-to: rgb(39 109 195 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-r {
+  --tw-gradient-to: #1f5798;
+}
+
+.from-perl {
+  --tw-gradient-from: #0073a1;
+  --tw-gradient-to: rgb(0 115 161 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-perl {
+  --tw-gradient-to: #005c82;
+}
+
+.from-lua {
+  --tw-gradient-from: #000080;
+  --tw-gradient-to: rgb(0 0 128 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-lua {
+  --tw-gradient-to: #00006b;
+}
+
+/* Card hover effects */
+.card-hover-effect {
+  @apply transition-all duration-300 ease-in-out;
+  background: linear-gradient(
+    to bottom right,
+    hsl(var(--card)) 0%,
+    hsl(var(--card)) 100%
+  );
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Language card hover effects */
+.language-card {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.language-card.java:hover {
+  background: linear-gradient(to bottom right, rgba(0, 115, 150, 0.1), rgba(237, 139, 0, 0.1));
+}
+
+.language-card.python:hover {
+  background: linear-gradient(to bottom right, rgba(55, 118, 171, 0.1), rgba(255, 212, 59, 0.1));
+}
+
+.language-card.typescript:hover {
+  background: linear-gradient(to bottom right, rgba(49, 120, 198, 0.1), rgba(35, 90, 151, 0.1));
+}
+
+.language-card.javascript:hover {
+  background: linear-gradient(to bottom right, rgba(247, 223, 30, 0.1), rgba(240, 219, 79, 0.1));
+}
+
+.language-card.cpp:hover {
+  background: linear-gradient(to bottom right, rgba(0, 89, 156, 0.1), rgba(0, 68, 130, 0.1));
+}
+
+.language-card.ruby:hover {
+  background: linear-gradient(to bottom right, rgba(204, 52, 45, 0.1), rgba(163, 31, 26, 0.1));
+}
+
+.language-card.go:hover {
+  background: linear-gradient(to bottom right, rgba(0, 173, 216, 0.1), rgba(0, 125, 156, 0.1));
+}
+
+.language-card.rust:hover {
+  background: linear-gradient(to bottom right, rgba(222, 165, 132, 0.1), rgba(167, 33, 69, 0.1));
+}
+
+.language-card.php:hover {
+  background: linear-gradient(to bottom right, rgba(119, 123, 179, 0.1), rgba(79, 91, 147, 0.1));
+}
+
+.language-card.swift:hover {
+  background: linear-gradient(to bottom right, rgba(240, 81, 56, 0.1), rgba(202, 41, 17, 0.1));
+}
+
+.language-card.kotlin:hover {
+  background: linear-gradient(to bottom right, rgba(127, 82, 255, 0.1), rgba(88, 125, 239, 0.1));
+}
+
+.language-card.csharp:hover {
+  background: linear-gradient(to bottom right, rgba(104, 33, 122, 0.1), rgba(155, 79, 150, 0.1));
+}
+
+.language-card.scala:hover {
+  background: linear-gradient(to bottom right, rgba(220, 50, 47, 0.1), rgba(198, 26, 25, 0.1));
+}
+
+.language-card.dart:hover {
+  background: linear-gradient(to bottom right, rgba(0, 180, 171, 0.1), rgba(0, 147, 139, 0.1));
+}
+
+.language-card.haskell:hover {
+  background: linear-gradient(to bottom right, rgba(94, 80, 134, 0.1), rgba(69, 58, 97, 0.1));
+}
+
+.language-card.r:hover {
+  background: linear-gradient(to bottom right, rgba(39, 109, 195, 0.1), rgba(31, 87, 152, 0.1));
+}
+
+.language-card.perl:hover {
+  background: linear-gradient(to bottom right, rgba(0, 115, 161, 0.1), rgba(0, 92, 130, 0.1));
+}
+
+.language-card.lua:hover {
+  background: linear-gradient(to bottom right, rgba(0, 0, 128, 0.1), rgba(0, 0, 107, 0.1));
+}
+
+/* Language card hover text colors */
+.language-card:hover {
+  color: inherit;
+}
+
+.language-card:hover .text-muted-foreground {
+  color: inherit;
+}
+
+/* Language page backgrounds */
+.language-page {
+  @apply min-h-screen;
+  position: relative;
+}
+
+.language-page.cpp {
+  background: linear-gradient(to bottom right, rgba(0, 89, 156, 0.1), rgba(0, 68, 130, 0.1));
+}
+
+.language-page.python {
+  background: linear-gradient(to bottom right, rgba(55, 118, 171, 0.1), rgba(255, 212, 59, 0.1));
+}
+
+.language-page.typescript {
+  background: linear-gradient(to bottom right, rgba(49, 120, 198, 0.1), rgba(35, 90, 151, 0.1));
+}
+
+.language-page.javascript {
+  background: linear-gradient(to bottom right, rgba(247, 223, 30, 0.1), rgba(240, 219, 79, 0.1));
+}
+
+.language-page.ruby {
+  background: linear-gradient(to bottom right, rgba(204, 52, 45, 0.1), rgba(163, 31, 26, 0.1));
+}
+
+.language-page.go {
+  background: linear-gradient(to bottom right, rgba(0, 173, 216, 0.1), rgba(0, 125, 156, 0.1));
+}
+
+.language-page.rust {
+  background: linear-gradient(to bottom right, rgba(222, 165, 132, 0.1), rgba(167, 33, 69, 0.1));
+}
+
+.language-page.php {
+  background: linear-gradient(to bottom right, rgba(119, 123, 179, 0.1), rgba(79, 91, 147, 0.1));
+}
+
+.language-page.swift {
+  background: linear-gradient(to bottom right, rgba(240, 81, 56, 0.1), rgba(202, 41, 17, 0.1));
+}
+
+.language-page.kotlin {
+  background: linear-gradient(to bottom right, rgba(127, 82, 255, 0.1), rgba(88, 125, 239, 0.1));
+}
+
+.language-page.csharp {
+  background: linear-gradient(to bottom right, rgba(104, 33, 122, 0.1), rgba(155, 79, 150, 0.1));
+}
+
+.language-page.scala {
+  background: linear-gradient(to bottom right, rgba(220, 50, 47, 0.1), rgba(198, 26, 25, 0.1));
+}
+
+.language-page.dart {
+  background: linear-gradient(to bottom right, rgba(0, 180, 171, 0.1), rgba(0, 147, 139, 0.1));
+}
+
+.language-page.haskell {
+  background: linear-gradient(to bottom right, rgba(94, 80, 134, 0.1), rgba(69, 58, 97, 0.1));
+}
+
+.language-page.r {
+  background: linear-gradient(to bottom right, rgba(39, 109, 195, 0.1), rgba(31, 87, 152, 0.1));
+}
+
+.language-page.perl {
+  background: linear-gradient(to bottom right, rgba(0, 115, 161, 0.1), rgba(0, 92, 130, 0.1));
+}
+
+.language-page.lua {
+  background: linear-gradient(to bottom right, rgba(0, 0, 128, 0.1), rgba(0, 0, 107, 0.1));
+}
+
+/* Add specific class for C++ page */
+.language-page.c\\+\\+ {
+  background: linear-gradient(to bottom right, rgba(0, 89, 156, 0.1), rgba(0, 68, 130, 0.1));
+}
+

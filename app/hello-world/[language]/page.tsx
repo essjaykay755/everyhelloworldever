@@ -5,19 +5,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
 import { helloWorlds } from '@/data/hello-worlds'
+import { getLanguageData } from '@/lib/languages'
 
 interface PageProps {
   params: {
     language: string
   }
-}
-
-const getLanguageFromSlug = (slug: string): string => {
-  const slugToLanguage: Record<string, string> = {
-    'cpp': 'C++',
-    'csharp': 'C#'
-  }
-  return slugToLanguage[slug] || slug
 }
 
 export function generateStaticParams() {
@@ -32,19 +25,327 @@ export function generateStaticParams() {
   })
 }
 
-export default function HelloWorldPage({ params }: PageProps) {
-  const languageName = getLanguageFromSlug(params.language)
-  
-  const helloWorld = helloWorlds.find(
-    (hello) => hello.language.toLowerCase() === languageName.toLowerCase()
-  )
+function getLanguageInfo(language: string) {
+  const info: Record<string, {
+    description: string;
+    history: string;
+    platforms: string[];
+    useCases: string[];
+    keyFeatures: string[];
+    funFact: string;
+  }> = {
+    JavaScript: {
+      description: "A versatile programming language that powers the web, supporting both frontend and backend development.",
+      history: "Created by Brendan Eich in just 10 days in 1995, JavaScript was originally named 'Mocha' before becoming the language we know today. Despite initial skepticism, it has evolved into one of the world's most popular programming languages.",
+      platforms: ["Web Browsers", "Node.js", "Deno", "Desktop (Electron)", "Mobile (React Native, Ionic)"],
+      useCases: [
+        "Web Development",
+        "Server-side Applications",
+        "Mobile Apps",
+        "Desktop Applications",
+        "Game Development"
+      ],
+      keyFeatures: [
+        "First-class functions",
+        "Dynamic typing",
+        "Rich ecosystem (npm)",
+        "Event-driven programming",
+        "JSON support"
+      ],
+      funFact: "JavaScript has nothing to do with Java - it was named that way for marketing purposes!"
+    },
+    Python: {
+      description: "A high-level, interpreted programming language known for its simplicity and readability.",
+      history: "Created by Guido van Rossum and released in 1991, Python was named after Monty Python's Flying Circus. The language's design philosophy emphasizes code readability with its notable use of significant whitespace.",
+      platforms: ["Windows", "macOS", "Linux", "Android", "iOS"],
+      useCases: [
+        "Data Science",
+        "Machine Learning",
+        "Web Development",
+        "Automation",
+        "Scientific Computing"
+      ],
+      keyFeatures: [
+        "Simple, readable syntax",
+        "Extensive standard library",
+        "Dynamic typing",
+        "Automatic memory management",
+        "Rich ecosystem of packages"
+      ],
+      funFact: "Python's name isn't about snakes at all - it's named after the British comedy group Monty Python!"
+    },
+    Java: {
+      description: "A class-based, object-oriented programming language designed to be platform-independent.",
+      history: "Developed by James Gosling at Sun Microsystems in 1995, Java was originally designed for interactive television, but it was too advanced for the digital cable television industry at the time. The language was initially called 'Oak' after an oak tree outside Gosling's office.",
+      platforms: ["Windows", "macOS", "Linux", "Android", "IoT Devices"],
+      useCases: [
+        "Enterprise Software",
+        "Android Development",
+        "Web Applications",
+        "Big Data Processing",
+        "Embedded Systems"
+      ],
+      keyFeatures: [
+        "Platform independence (WORA)",
+        "Object-oriented",
+        "Strong type system",
+        "Automatic memory management",
+        "Rich standard library"
+      ],
+      funFact: "The Java mascot, Duke, was created by Joe Palrang, who also worked on the animated movies Shrek and Madagascar!"
+    },
+    "C++": {
+      description: "A powerful systems programming language that extends C with object-oriented features.",
+      history: "Developed by Bjarne Stroustrup in 1979, C++ was created as an extension of C called 'C with Classes'. It was renamed to C++ in 1983, with '++' being the increment operator in C.",
+      platforms: ["Windows", "macOS", "Linux", "Embedded Systems", "Game Consoles"],
+      useCases: [
+        "System Programming",
+        "Game Development",
+        "Real-time Systems",
+        "High-performance Applications",
+        "Operating Systems"
+      ],
+      keyFeatures: [
+        "Object-oriented programming",
+        "Low-level memory manipulation",
+        "High performance",
+        "Template metaprogramming",
+        "STL (Standard Template Library)"
+      ],
+      funFact: "The name C++ is a pun - it indicates that C++ is an incremented version of C!"
+    },
+    Ruby: {
+      description: "A dynamic, object-oriented programming language focused on simplicity and productivity.",
+      history: "Created by Yukihiro 'Matz' Matsumoto in 1995, Ruby was designed with programmer happiness in mind. Matz blended parts of his favorite languages (Perl, Smalltalk, Eiffel, Ada, and Lisp) to create Ruby.",
+      platforms: ["Windows", "macOS", "Linux", "Web (via Ruby on Rails)"],
+      useCases: [
+        "Web Development",
+        "Scripting",
+        "DevOps",
+        "Automation",
+        "Data Processing"
+      ],
+      keyFeatures: [
+        "Pure object-oriented",
+        "Dynamic typing",
+        "Ruby on Rails framework",
+        "Rich standard library",
+        "Block syntax and iterators"
+      ],
+      funFact: "Ruby's creator once said, 'Ruby is designed to make programmers happy.' It's known as the language of happiness!"
+    },
+    Go: {
+      description: "A statically typed, compiled language designed for simplicity, efficiency, and strong concurrency support.",
+      history: "Developed by Robert Griesemer, Rob Pike, and Ken Thompson at Google in 2007, Go was created to address criticism of other languages while maintaining their positive characteristics. It was publicly announced in 2009.",
+      platforms: ["Windows", "macOS", "Linux", "Cloud Platforms"],
+      useCases: [
+        "Cloud Services",
+        "System Programming",
+        "Web Services",
+        "DevOps Tools",
+        "Network Programming"
+      ],
+      keyFeatures: [
+        "Strong concurrency support",
+        "Fast compilation",
+        "Built-in testing",
+        "Garbage collection",
+        "Simplified dependency management"
+      ],
+      funFact: "Go was originally going to be called 'Gore' (Google + Core), but they settled on 'Go' instead!"
+    },
+    Rust: {
+      description: "A systems programming language that guarantees memory safety and thread safety.",
+      history: "Initially developed by Mozilla employee Graydon Hoare in 2006, Rust was designed to be a safe, concurrent, and practical language. Mozilla began sponsoring the project in 2009 and announced it in 2010.",
+      platforms: ["Windows", "macOS", "Linux", "WebAssembly", "Embedded Systems"],
+      useCases: [
+        "Systems Programming",
+        "WebAssembly Development",
+        "Network Services",
+        "Command-line Tools",
+        "Game Development"
+      ],
+      keyFeatures: [
+        "Memory safety without garbage collection",
+        "Zero-cost abstractions",
+        "Pattern matching",
+        "Trait-based generics",
+        "Type inference"
+      ],
+      funFact: "Rust has been voted the 'most loved programming language' in Stack Overflow's Developer Survey for several consecutive years!"
+    },
+    Swift: {
+      description: "A powerful and intuitive programming language for iOS, macOS, and other Apple platforms.",
+      history: "Developed by Apple and introduced in 2014, Swift was designed to replace Objective-C. Development of Swift started in 2010 by Chris Lattner, who also created the LLVM compiler infrastructure.",
+      platforms: ["iOS", "macOS", "watchOS", "tvOS", "Linux"],
+      useCases: [
+        "iOS App Development",
+        "macOS App Development",
+        "Server-side Development",
+        "System Programming",
+        "Game Development"
+      ],
+      keyFeatures: [
+        "Type inference",
+        "Optionals for safe handling",
+        "Protocol-oriented programming",
+        "Modern syntax",
+        "Interactive Playgrounds"
+      ],
+      funFact: "Swift's development was so secret that even most Apple engineers didn't know about it until its public announcement!"
+    },
+    Kotlin: {
+      description: "A modern programming language that offers full interoperability with Java while being more concise.",
+      history: "Developed by JetBrains in 2011, Kotlin was named after Kotlin Island near St. Petersburg. It became Google's preferred language for Android development in 2019.",
+      platforms: ["Android", "JVM", "Web Browsers", "Native", "iOS"],
+      useCases: [
+        "Android Development",
+        "Server-side Development",
+        "Cross-platform Mobile",
+        "Web Development",
+        "Data Science"
+      ],
+      keyFeatures: [
+        "Java interoperability",
+        "Null safety",
+        "Coroutines for async",
+        "Extension functions",
+        "Smart casts"
+      ],
+      funFact: "Kotlin is the first programming language to be named after an island - Kotlin Island in Russia!"
+    },
+    TypeScript: {
+      description: "A typed superset of JavaScript that adds optional static types to the language.",
+      history: "Developed by Microsoft and first released in 2012, TypeScript was created by Anders Hejlsberg, who also designed C# and Delphi. It was developed to address the challenges of writing large-scale applications in JavaScript.",
+      platforms: ["Web Browsers", "Node.js", "Deno", "Any JavaScript Runtime"],
+      useCases: [
+        "Large-scale Web Applications",
+        "Enterprise Software",
+        "Node.js Applications",
+        "React/Angular Development",
+        "API Development"
+      ],
+      keyFeatures: [
+        "Static typing",
+        "ECMAScript compatibility",
+        "Object-oriented features",
+        "IDE support",
+        "Generics"
+      ],
+      funFact: "TypeScript's compiler is itself written in TypeScript - talk about eating your own dog food!"
+    },
+    "C#": {
+      description: "A modern, object-oriented language developed by Microsoft for the .NET platform.",
+      history: "Developed by Anders Hejlsberg at Microsoft in 2000, C# was designed as part of the .NET initiative. Its name comes from the musical notation where a sharp (#) increases a note's pitch by one semitone.",
+      platforms: ["Windows", "macOS", "Linux", "Unity Game Engine", "Mobile (Xamarin)"],
+      useCases: [
+        "Enterprise Applications",
+        "Game Development",
+        "Windows Applications",
+        "Web Services",
+        "Mobile Development"
+      ],
+      keyFeatures: [
+        "Type safety",
+        "Versioning",
+        "Garbage collection",
+        "LINQ integration",
+        "Async programming"
+      ],
+      funFact: "The original codename for C# was 'Cool' (C-like Object Oriented Language)!"
+    },
+    PHP: {
+      description: "A popular server-side scripting language designed specifically for web development.",
+      history: "Created by Rasmus Lerdorf in 1994, PHP originally stood for 'Personal Home Page'. It was rewritten in 1997 by Zeev Suraski and Andi Gutmans, and renamed to 'PHP: Hypertext Preprocessor'.",
+      platforms: ["Linux", "Windows", "macOS", "Web Servers"],
+      useCases: [
+        "Web Development",
+        "Server-side Scripting",
+        "Command Line Scripting",
+        "WordPress Development",
+        "Content Management Systems"
+      ],
+      keyFeatures: [
+        "Easy database integration",
+        "Cross-platform support",
+        "Large standard library",
+        "Rich ecosystem",
+        "Simple deployment"
+      ],
+      funFact: "PHP was never meant to be a programming language! It started as a set of tools to maintain Rasmus Lerdorf's personal homepage."
+    },
+    Perl: {
+      description: "A high-level, general-purpose, interpreted programming language with powerful text processing capabilities.",
+      history: "Created by Larry Wall in 1987, Perl was developed as a Unix scripting language for report processing. The name was originally meant to stand for 'Practical Extraction and Report Language'.",
+      platforms: ["Unix/Linux", "Windows", "macOS", "Web Servers"],
+      useCases: [
+        "Text Processing",
+        "System Administration",
+        "Web Development",
+        "Network Programming",
+        "Bioinformatics"
+      ],
+      keyFeatures: [
+        "Regular expressions",
+        "Text manipulation",
+        "CPAN repository",
+        "Cross-platform support",
+        "CGI scripting"
+      ],
+      funFact: "Perl's motto is 'There's More Than One Way To Do It' (TMTOWTDI), which is the opposite of Python's philosophy!"
+    },
+    Lua: {
+      description: "A lightweight, high-level programming language designed for embedded use in applications.",
+      history: "Created in 1993 by Roberto Ierusalimschy, Waldemar Celes, and Luiz Henrique de Figueiredo at PUC-Rio in Brazil. The name 'Lua' means 'moon' in Portuguese.",
+      platforms: ["Embedded Systems", "Game Engines", "IoT Devices", "All Major OS"],
+      useCases: [
+        "Game Development",
+        "Embedded Systems",
+        "Script Extensions",
+        "Mobile Applications",
+        "Configuration"
+      ],
+      keyFeatures: [
+        "Lightweight",
+        "Embeddable",
+        "Fast execution",
+        "Simple syntax",
+        "Coroutines"
+      ],
+      funFact: "Lua is the most popular programming language developed in a developing country (Brazil)!"
+    }
+  }
 
-  if (!helloWorld) {
+  // Default info for languages not explicitly defined
+  const defaultInfo = {
+    description: `A powerful programming language used in software development.`,
+    history: `${language} has evolved over time to become an important tool in the programming landscape.`,
+    platforms: ["Multiple platforms"],
+    useCases: ["Software Development", "Application Development"],
+    keyFeatures: [
+      "Modern development features",
+      "Active community",
+      "Professional tooling",
+      "Cross-platform support"
+    ],
+    funFact: `${language} continues to surprise developers with its capabilities!`
+  }
+
+  return info[language] || defaultInfo
+}
+
+export default function HelloWorldPage({ params }: PageProps) {
+  const languageData = getLanguageData(params.language)
+  
+  if (!languageData) {
     notFound()
   }
 
+  const languageSlug = params.language.toLowerCase()
+  const languageInfo = getLanguageInfo(params.language)
+
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-background via-background/95 ${helloWorld.gradient}`}>
+    <div className={`language-page ${languageSlug}`}>
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <Link 
@@ -58,148 +359,104 @@ export default function HelloWorldPage({ params }: PageProps) {
           <header className="mb-8">
             <div className="flex items-center gap-4 mb-4">
               <Image
-                src={helloWorld.icon}
-                alt={`${helloWorld.language} logo`}
+                src={languageData.icon}
+                alt={`${languageData.language} logo`}
                 width={48}
                 height={48}
                 className="h-12 w-12"
               />
-              <h1 className="text-4xl font-bold">
-                Hello World in {helloWorld.language}
+              <h1 className="text-3xl font-bold">
+                Hello World in {languageData.language}
               </h1>
             </div>
-            <p className="text-muted-foreground text-lg">
-              Learn how to write and understand the classic "Hello, World!" program in {helloWorld.language}.
-            </p>
+            <p className="text-lg text-muted-foreground">{languageInfo.description}</p>
           </header>
 
           <div className="grid gap-6">
-            <Card>
+            <Card className="overflow-hidden">
               <CardHeader>
-                <CardTitle>Code Example</CardTitle>
+                <CardTitle>Hello World Example</CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-0">
+                <div className="border-b border-border bg-muted/50 px-4 py-2 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Image 
+                      src={languageData.icon}
+                      alt={`${languageData.language} logo`}
+                      width={20}
+                      height={20}
+                      className="h-5 w-5"
+                    />
+                    <h2 className="font-semibold">{languageData.language}</h2>
+                  </div>
+                  <span className="text-xs text-muted-foreground">.{languageData.extension}</span>
+                </div>
                 <CodeBlock
-                  code={helloWorld.code}
-                  extension={helloWorld.extension}
+                  code={languageData.code}
+                  extension={languageData.extension}
                 />
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>About {helloWorld.language}</CardTitle>
+                <CardTitle>History</CardTitle>
               </CardHeader>
-              <CardContent className="prose prose-invert max-w-none">
-                <p>
-                  {helloWorld.language} is a {getLanguageDescription(helloWorld.language)}
-                </p>
-                <h3>Key Features:</h3>
-                {getLanguageFeatures(helloWorld.language).map((feature, index) => (
-                  <div key={index} className="flex items-start gap-2 mt-2">
-                    <span className="text-primary">•</span>
-                    <p className="mt-0">{feature}</p>
-                  </div>
-                ))}
+              <CardContent className="prose dark:prose-invert max-w-none">
+                <p>{languageInfo.history}</p>
+                <div className="mt-4 p-4 bg-muted rounded-lg">
+                  <p className="text-sm font-medium text-muted-foreground">💡 Fun Fact</p>
+                  <p className="mt-1 text-sm">{languageInfo.funFact}</p>
+                </div>
               </CardContent>
             </Card>
 
+            <div className="grid gap-6 md:grid-cols-2">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Platforms</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="list-disc pl-4 space-y-2">
+                    {languageInfo.platforms.map((platform, index) => (
+                      <li key={index} className="text-muted-foreground">{platform}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Common Use Cases</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="list-disc pl-4 space-y-2">
+                    {languageInfo.useCases.map((useCase, index) => (
+                      <li key={index} className="text-muted-foreground">{useCase}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+
             <Card>
               <CardHeader>
-                <CardTitle>Code Explanation</CardTitle>
+                <CardTitle>Key Features</CardTitle>
               </CardHeader>
-              <CardContent className="prose prose-invert max-w-none">
-                {getCodeExplanation(helloWorld)}
+              <CardContent>
+                <ul className="grid gap-2">
+                  {languageInfo.keyFeatures.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="text-primary mt-1">•</span>
+                      <span className="text-muted-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </CardContent>
             </Card>
           </div>
         </div>
       </div>
     </div>
-  )
-}
-
-function getLanguageDescription(language: string): string {
-  const descriptions: Record<string, string> = {
-    JavaScript: "versatile programming language that powers the web, supporting both frontend and backend development.",
-    Python: "high-level, interpreted programming language known for its simplicity and readability.",
-    Java: "class-based, object-oriented programming language designed to be platform-independent.",
-    "C++": "powerful systems programming language that extends C with object-oriented features.",
-    Ruby: "dynamic, object-oriented programming language focused on simplicity and productivity.",
-    Go: "statically typed, compiled language designed for simplicity, efficiency, and strong concurrency support.",
-    Rust: "systems programming language that guarantees memory safety and thread safety.",
-    PHP: "server-side scripting language designed specifically for web development.",
-    Swift: "modern programming language designed by Apple for iOS, macOS, and other Apple OS development.",
-    Kotlin: "modern programming language that offers full interoperability with Java while being more concise.",
-    TypeScript: "typed superset of JavaScript that adds optional static types to the language.",
-    "C#": "modern, object-oriented language developed by Microsoft for the .NET platform.",
-    Scala: "modern multi-paradigm programming language that combines object-oriented and functional programming.",
-    Dart: "client-optimized language for fast apps on any platform, developed by Google.",
-    Haskell: "purely functional programming language with strong static typing and type inference.",
-    R: "programming language for statistical computing and graphics.",
-    Perl: "high-level, general-purpose, interpreted programming language.",
-    Lua: "lightweight, high-level programming language designed for embedded use in applications."
-  }
-  return descriptions[language] || "popular programming language used in software development."
-}
-
-function getLanguageFeatures(language: string): string[] {
-  const features: Record<string, string[]> = {
-    JavaScript: [
-      "Dynamic typing and first-class functions",
-      "Rich ecosystem with npm packages",
-      "Asynchronous programming with Promises",
-      "Both browser and server-side execution"
-    ],
-    Python: [
-      "Clear, readable syntax",
-      "Extensive standard library",
-      "Strong community and package ecosystem",
-      "Great for data science and machine learning"
-    ],
-    // Add more language features as needed
-  }
-  return features[language] || [
-    "Modern development features",
-    "Active community and ecosystem",
-    "Professional tooling support",
-    "Cross-platform compatibility"
-  ]
-}
-
-function getCodeExplanation(helloWorld: typeof helloWorlds[0]): JSX.Element {
-  const explanations: Record<string, JSX.Element> = {
-    JavaScript: (
-      <>
-        <p>The JavaScript Hello World program is straightforward:</p>
-        <ul>
-          <li><code>console.log()</code> is a built-in function that prints text to the console</li>
-          <li>The text is enclosed in quotes to create a string</li>
-          <li>The statement ends with a semicolon (optional in JavaScript)</li>
-        </ul>
-      </>
-    ),
-    Python: (
-      <>
-        <p>Python's Hello World demonstrates its simple syntax:</p>
-        <ul>
-          <li>The <code>print()</code> function outputs text to the console</li>
-          <li>String literals can use either single or double quotes</li>
-          <li>No semicolon is needed at the end of statements</li>
-        </ul>
-      </>
-    ),
-    // Add more explanations as needed
-  }
-
-  return explanations[helloWorld.language] || (
-    <>
-      <p>This Hello World program in {helloWorld.language} demonstrates:</p>
-      <ul>
-        <li>Basic syntax for output operations</li>
-        <li>String literal formatting</li>
-        <li>Program structure and entry point</li>
-      </ul>
-    </>
   )
 } 
