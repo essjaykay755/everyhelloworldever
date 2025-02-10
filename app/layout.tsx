@@ -6,7 +6,7 @@ import { Footer } from '@/components/footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Every "Hello World" Ever',
+  title: 'Hello World Universe',
   description: 'A collection of "Hello, World!" in every programming language',
 }
 

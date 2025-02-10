@@ -60,7 +60,9 @@ export function CodeBlock({ code, extension }: CodeBlockProps) {
           margin: 0,
           padding: '1rem',
           background: 'transparent',
-          minHeight: '200px'
+          minHeight: '200px',
+          maxWidth: '100%',
+          overflowX: 'hidden'
         }}
         wrapLongLines={true}
       >

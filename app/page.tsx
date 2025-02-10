@@ -12,7 +12,7 @@ export default function HomePage() {
             </h1>
           </div>
           <p className="text-muted-foreground text-lg relative">
-            A collection of &quot;Hello, World!&quot; in every programming language
+            Hello World Universe
           </p>
         </header>
         <HelloWorldGrid />
