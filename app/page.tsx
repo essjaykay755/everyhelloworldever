@@ -8,11 +8,11 @@ export default function HomePage() {
           <div className="relative">
             <div className="absolute inset-0 blur-3xl opacity-20 bg-gradient-to-r from-primary to-secondary" />
             <h1 className="relative text-4xl font-bold tracking-tight sm:text-6xl bg-gradient-to-r from-primary/80 to-secondary bg-clip-text text-transparent">
-              Every &quot;Hello World&quot; Ever
+              Hello World Universe
             </h1>
           </div>
           <p className="text-muted-foreground text-lg relative">
-            Hello World Universe
+            A collection of &quot;Hello, World!&quot; in every programming language
           </p>
         </header>
         <HelloWorldGrid />
