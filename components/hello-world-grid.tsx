@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "./code-block";
 import { HtmlCard } from "./html-card";

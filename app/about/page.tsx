@@ -84,12 +84,12 @@ export default function AboutPage() {
             Join us in our quest to make the world a more welcoming place, one
             print statement at a time. Remember: in a world full of complex
             algorithms and design patterns, sometimes all you need is a good old
-            "Hello, World!" to brighten your day.
+            &ldquo;Hello, World!&rdquo; to brighten your day.
           </p>
           <p className="text-sm italic">
             No computers were harmed in the making of this website. Though a few
-            semicolons may have been misplaced, and one HTML file's feelings
-            were slightly bruised.
+            semicolons may have been misplaced, and one HTML file&rsquo;s
+            feelings were slightly bruised.
           </p>
         </div>
       </div>

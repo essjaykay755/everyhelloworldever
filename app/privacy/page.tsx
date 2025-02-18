@@ -19,7 +19,7 @@ export default function PrivacyPage() {
           <h2>Information Collection</h2>
           <p>
             Hello World Universe does not collect any personal information. We
-            don't use cookies or any tracking mechanisms.
+            don&rsquo;t use cookies or any tracking mechanisms.
           </p>
 
           <h2>Usage Data</h2>
